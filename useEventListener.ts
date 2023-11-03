@@ -45,3 +45,17 @@ export default function useEventListener(
     }
   }, [eventType, element])
 }
+
+//Usage
+
+import { useState } from 'react'
+import useEventListener from './useEventListener'
+export default function EventListenerComponent() {
+  const [key, setKey] = useState<string>('')
+  useEventListener('keydown', (e: Event) => {
+    if (e instanceof KeyboardEvent) {
+      setKey(e.key)
+    }
+  })
+  return <div> {key} </div>
+}

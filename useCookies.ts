@@ -33,3 +33,19 @@ export default function useCookie<T>(
 
   return [value, updateCookie, deleteCookie]
 }
+
+// Usage
+
+import useCookies from './useCookies'
+
+export default function CookieComponent() {
+  const [value, update, remove] = useCookie<string>('name', '前端柒八九')
+
+  return (
+    <>
+      <div>{value}</div>
+      <button onClick={() => update('789')}>修改cookie</button>
+      <button onClick={remove}>移除cookie</button>
+    </>
+  )
+}
